@@ -30,7 +30,6 @@ const KB_FILES: Record<string, string> = {
   'ozon_clean.txt': 'OZON',
   'leo_clean.txt': 'LEO',
   'mkeeper_clean.txt': 'MKEEPER',
-  'farealchina_clean.txt': 'КАРГО/КИТАЙ',
   'maxprowb_clean.txt': 'MAXPRO WB',
   'reports_analysis.txt': 'ОТЧЁТЫ/АНАЛИТИКА',
 };
@@ -287,8 +286,7 @@ function detectTopicFromSection(section: string): string {
   const s = section.toUpperCase();
   if (s.includes('СЕКЦИЯ 1') || s.includes('WILDBERRIES') || s.includes('WB')) return 'WB';
   if (s.includes('СЕКЦИЯ 2') || s.includes('OZON')) return 'OZON';
-  if (s.includes('СЕКЦИЯ 3') || s.includes('КАРГО') || s.includes('ЛОГИСТИКА')) return 'КАРГО';
-  if (s.includes('СЕКЦИЯ 4') || s.includes('ОТЧЁТ') || s.includes('АНАЛИТИКА')) return 'ОТЧЁТЫ';
+    if (s.includes('СЕКЦИЯ 4') || s.includes('ОТЧЁТ') || s.includes('АНАЛИТИКА')) return 'ОТЧЁТЫ';
   if (s.includes('СЕКЦИЯ 5') || s.includes('КУРС') || s.includes('ОБУЧЕНИЕ')) return 'КУРСЫ';
   if (s.includes('СЕКЦИЯ 6') || s.includes('ЭВИРМ') || s.includes('EVIRM')) return 'ЭВИРМА';
   if (s.includes('СЕКЦИЯ 7') || s.includes('СТАТЬИ')) return 'СТАТЬИ';
@@ -302,8 +300,7 @@ function topicToSection(topic: string): string {
   const t = topic.toUpperCase();
   if (t.includes('WB') || t.includes('WILDBERRIES')) return 'СЕКЦИЯ 1: WB';
   if (t.includes('OZON')) return 'СЕКЦИЯ 2: OZON';
-  if (t.includes('КАРГО') || t.includes('ЛОГИСТИКА') || t.includes('КИТАЙ') || t.includes('CARGO')) return 'СЕКЦИЯ 3: КАРГО';
-  if (t.includes('ОТЧЁТ') || t.includes('АНАЛИТИК') || t.includes('REPORT')) return 'СЕКЦИЯ 4: ОТЧЁТЫ';
+    if (t.includes('ОТЧЁТ') || t.includes('АНАЛИТИК') || t.includes('REPORT')) return 'СЕКЦИЯ 4: ОТЧЁТЫ';
   if (t.includes('КУРС') || t.includes('ОБУЧЕН') || t.includes('LEO')) return 'СЕКЦИЯ 5: КУРСЫ';
   if (t.includes('ЭВИРМ') || t.includes('EVIRM') || t.includes('CRF')) return 'СЕКЦИЯ 6: ЭВИРМА';
   if (t.includes('СТАТЬ') || t.includes('SEO') || t.includes('РЕКЛАМ')) return 'СЕКЦИЯ 7: СТАТЬИ';
@@ -334,7 +331,7 @@ function parseFile(filename: string, sourceName: string): KBBlock[] {
       return parsePlainText(text, sourceName);
     }
 
-    // Channel-style files: ozon, leo, mkeeper, farealchina, maxprowb
+    // Channel-style files: ozon, leo, mkeeper, maxprowb
     return parseChannelBlocks(text, sourceName);
   } catch (error) {
     console.error(`Failed to load KB file ${filename}:`, error);
