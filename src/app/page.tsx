@@ -35,7 +35,7 @@ interface Message {
   timestamp: number
 }
 
-type TopicKey = 'all' | 'WB' | 'OZON' | 'КАРГО' | 'ОТЧЁТЫ' | 'КУРСЫ' | 'ЭВИРМА' | 'СТАТЬИ'
+type TopicKey = 'all' | 'WB' | 'OZON' | 'ОТЧЁТЫ' | 'КУРСЫ' | 'ЭВИРМА' | 'СТАТЬИ'
 
 interface TopicConfig {
   label: string
@@ -49,7 +49,6 @@ const TOPICS: Record<TopicKey, TopicConfig> = {
   all: { label: 'Все', icon: MessageCircle, color: 'from-emerald-500 to-green-600' },
   WB: { label: 'WB', icon: Store, color: 'from-violet-500 to-purple-600' },
   OZON: { label: 'Ozon', icon: ShoppingCart, color: 'from-blue-500 to-cyan-600' },
-  КАРГО: { label: 'Карго', icon: Truck, color: 'from-amber-500 to-orange-600' },
   ОТЧЁТЫ: { label: 'Отчёты', icon: FileBarChart, color: 'from-rose-500 to-pink-600' },
   КУРСЫ: { label: 'Курсы', icon: GraduationCap, color: 'from-teal-500 to-emerald-600' },
   ЭВИРМА: { label: 'Эвирма', icon: Globe, color: 'from-sky-500 to-indigo-600' },
@@ -60,7 +59,6 @@ const SUGGESTIONS = [
   { text: 'Как снизить ДРР на WB?', icon: Zap, topic: 'WB' as TopicKey },
   { text: 'Что такое CRF(L) и как его использовать?', icon: Sparkles, topic: 'WB' as TopicKey },
   { text: 'Как продвигать карточку на Ozon?', icon: ShoppingCart, topic: 'OZON' as TopicKey },
-  { text: 'Как заказать товар из Китая?', icon: Truck, topic: 'КАРГО' as TopicKey },
   { text: 'Оборот WB и тренды рынка 2025?', icon: FileBarChart, topic: 'ОТЧЁТЫ' as TopicKey },
   { text: 'SEO карточки — как попасть в ТОП?', icon: BookOpen, topic: 'СТАТЬИ' as TopicKey },
   { text: 'Юнит-экономика: как считать прибыль?', icon: Search, topic: 'СТАТЬИ' as TopicKey },
@@ -302,7 +300,7 @@ export default function Home() {
                     Привет! Я MP Эксперт
                   </h2>
                   <p className="text-muted-foreground mb-10 max-w-md leading-relaxed">
-                    Задайте вопрос про Wildberries, Ozon, карго, логистику, SEO или налоги — 
+                    Задайте вопрос про Wildberries, Ozon, SEO или налоги — 
                     я отвечу с конкретными цифрами и рекомендациями из базы знаний
                   </p>
 
@@ -452,7 +450,7 @@ export default function Home() {
                 onKeyDown={handleKeyDown}
                 placeholder={
                   activeTopic === 'all'
-                    ? 'Спросите про WB, Ozon, карго, SEO, экономику...'
+                    ? 'Спросите про WB, Ozon, SEO, экономику...'
                     : `Спросите про ${TOPICS[activeTopic].label}...`
                 }
                 className="
